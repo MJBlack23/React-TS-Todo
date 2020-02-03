@@ -1,6 +1,11 @@
 import * as React from 'react'
+import Todo from '../types/Todo'
 
-export default props => (
+interface Props {
+  todo: Todo
+}
+
+export default (props: Props) => (
   <a className="panel-block">
     <div className="container-fluid">
       <nav className="level">
@@ -13,7 +18,7 @@ export default props => (
 
           <div className="level-item">
             <span className="is-size-4">
-              Make this thing dynamic
+              {props.todo.description}
           </span>
           </div>
         </div>

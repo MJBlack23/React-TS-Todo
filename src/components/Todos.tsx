@@ -4,8 +4,13 @@ import TodoItem from './TodoItem'
 import AddNewItem from './AddNewItem'
 import Search from './Search'
 import Tabs from './Tabs'
+import Todo from '../types/Todo'
 
-export default props => (
+interface Props {
+  todos: Todo[]
+}
+
+export default (props: Props) => (
   <article className="column is-half is-offset-one-quarter">
     <div className="panel is-info">
       <div className="panel-heading is-size-4">
@@ -16,8 +21,12 @@ export default props => (
 
       <Search />
 
-      <TodoItem />
-      <TodoItem />
+      {props.todos.map(todo => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+        />
+      ))}
 
       <AddNewItem />
       
