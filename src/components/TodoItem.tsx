@@ -12,7 +12,7 @@ export default (props: Props) => (
       console.log("Toggle item completed")
     }}
   >
-    <div className="container-fluid">
+    <div className="container">
       <nav className="level">
         {/* Left Side */}
         <div className="level-left">
@@ -42,7 +42,7 @@ export default (props: Props) => (
                 <i className="fas fa-trash is-size-5" />
               </button>
               <p className="is-italic has-text-weight-light is-size-7">
-                Created a few minutes ago
+                Created {props.todo.createdAt.fromNow()}
               </p>
             </div>
           </div>

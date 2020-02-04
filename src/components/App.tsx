@@ -20,7 +20,7 @@ export default class App extends React.Component<Props, State>{
           id: 0,
           description: 'The first thing',
           completed: false,
-          createdAt: moment().format("MM/DD/YY hh:mm")
+          createdAt: moment().subtract(3, "hours")
         }
       ]
     }
