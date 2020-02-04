@@ -26,7 +26,31 @@ export default class App extends React.Component<Props, State>{
     }
   }
 
-  render(): JSX.Element {
+  appendTodo = () => {
+    // Todo
+  }
+
+  completeTodo = () => {
+    // Todo
+  }
+
+  deleteTodo = () => {
+    // Todo
+  }
+
+  updateSearch = () => {
+    // Todo
+  }
+
+  toggleView = () => {
+    
+  }
+
+  private static applySearch = () => {
+    // Todo
+  }
+
+  render(): JSX.Element  {
     return (
       <section className="section">
         <div className="container">
