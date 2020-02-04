@@ -25,6 +25,10 @@ export default class App extends React.Component<Props, State>{
       ]
     }
   }
+  
+  updateTodoText = () => {
+    // Todo
+  }
 
   appendTodo = () => {
     // Todo
