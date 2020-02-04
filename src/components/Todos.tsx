@@ -6,8 +6,20 @@ import Search from './Search'
 import Tabs from './Tabs'
 import Todo from '../types/Todo'
 
+import { AnchorClick, DisplayType } from './App'
+
 interface Props {
   todos: Todo[]
+  todoText: string
+  searchText: string
+  appendTodo: (e: React.MouseEvent<HTMLButtonElement>) => void
+  updateTodoText: (e: React.ChangeEvent<HTMLInputElement>) => void
+  completeTodo: (id: number, newValue: boolean) => (e: AnchorClick) => void
+  deleteTodo: (id: number) => (e: React.MouseEvent<HTMLButtonElement>) => void
+  updateSearchText: (e: React.ChangeEvent<HTMLInputElement>) => void
+
+  view: DisplayType
+  updateView: (v: DisplayType) => (e: AnchorClick) => void
 }
 
 export default (props: Props) => (
@@ -17,18 +29,30 @@ export default (props: Props) => (
         Todo's
       </div>
 
-      <Tabs />
+      <Tabs 
+        view={props.view}
+        updateView={props.updateView}
+      />
 
-      <Search />
+      <Search
+        searchText={props.searchText}
+        updateSearchText={props.updateSearchText}
+      />
 
       {props.todos.map(todo => (
         <TodoItem
           key={todo.id}
           todo={todo}
+          completeTodo={props.completeTodo}
+          deleteTodo={props.deleteTodo}
         />
       ))}
 
-      <AddNewItem />
+      <AddNewItem
+        todoText={props.todoText}
+        updateTodoText={props.updateTodoText}
+        appendTodo={props.appendTodo}
+      />
       
     </div>
   </article>

@@ -1,16 +1,20 @@
 import * as React from 'react'
 import Todo from '../types/Todo'
 
+import { AnchorClick } from './App'
+
+type Changeable = AnchorClick | React.ChangeEvent<HTMLInputElement>
+
 interface Props {
   todo: Todo
+  completeTodo: (id: number, newValue: boolean) => (e: Changeable) => void
+  deleteTodo: (id: number) => (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export default (props: Props) => (
   <a
     className="panel-block"
-    onClick={() => {
-      console.log("Toggle item completed")
-    }}
+    onClick={props.completeTodo(props.todo.id, !props.todo.completed)}
   >
     <div className="container">
       <nav className="level">
@@ -18,7 +22,11 @@ export default (props: Props) => (
         <div className="level-left">
           <div className="level-item">
             <label className="checkbox">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={props.todo.completed}
+                onChange={props.completeTodo(props.todo.id, !props.todo.completed)}
+              />
             </label>
           </div>
 
@@ -35,9 +43,7 @@ export default (props: Props) => (
             <div>
               <button
                 className="button is-danger is-inverted"
-                onClick={() => {
-                  console.log('Delete pressed')
-                }}
+                onClick={props.deleteTodo(props.todo.id)}
               >
                 <i className="fas fa-trash is-size-5" />
               </button>
